@@ -1,0 +1,20 @@
+<app-loading *ngIf="loading"></app-loading>
+<div class="row" *ngIf="!loading">
+    <div class="col-lg-8 offset-lg-2">
+        <div class="card" style="width: 25rem; margin: 0 auto;">
+            <img [src]="image" alt="" class="card-img-top img-thumbnail">
+            <div class="card-body text-center">
+             <!--    <h5 class="card-title">{{ firstName }} {{ lastName }}</h5> -->
+             <h5 class="card-title">{{ name }}</h5>
+                <ul class="list-group.list-group-flush">
+                    <li class="list-group-item">Email: {{ species }}</li>
+                    <li class="list-group-item">Phone: {{ status }}</li>
+                    <li class="list-group-item">Gender: {{ gender }}</li>
+                </ul>
+            </div>
+            <button class="btn btn-primary btn-block btn-xl" routerLink="/dashboard">
+                VOLVER
+            </button>
+        </div>
+    </div>
+</div>
