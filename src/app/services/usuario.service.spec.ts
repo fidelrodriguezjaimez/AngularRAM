@@ -27,6 +27,11 @@ describe('UsuarioService', () => {
     expect(service).toBeTruthy();
   });
 
+  it('should initialize sanitizedUrl correctly', () => {
+    const sanitizedUrl = sanitizer.bypassSecurityTrustResourceUrl(service['url']);
+    expect(service.sanitizedUrl).toEqual(sanitizedUrl);
+  });
+
   it('should fetch users', () => {
     const dummyUsers: UserRickMorty = { "results" : [
       {
@@ -52,6 +57,7 @@ describe('UsuarioService', () => {
 
     const req = httpMock.expectOne(`${service['url']}${service['path']}/character`);
     expect(req.request.method).toBe('GET');
+    expect(req.request.headers.get('accept')).toBe('*/*');
     req.flush(dummyUsers);
   });
 
